@@ -42,4 +42,38 @@ public class Utility extends Exception{ //todo needs the extends exception? prob
 
 
     }
+
+    public void validateAge(int age) throws InvalidAgeException
+    {
+        if(age >= 100)
+        {
+            throw new InvalidAgeException("AgeException: 0<= (155) <= 100 is invalid");
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
