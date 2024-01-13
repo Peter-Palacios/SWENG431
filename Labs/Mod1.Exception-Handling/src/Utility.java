@@ -1,7 +1,7 @@
 import javax.naming.InvalidNameException;
 import javax.naming.NamingException;
 
-public class Utility { //todo needs the extends exception? probably not
+public class Utility {
 
     //name cannot be zero or longer than '15' charactrs
     //a character can be space, "-", alphabet or ","

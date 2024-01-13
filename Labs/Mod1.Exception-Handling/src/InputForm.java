@@ -7,6 +7,8 @@ import java.awt.event.FocusEvent;
 
 
 public class InputForm extends JFrame {
+    private boolean verifyName;
+    private boolean verifyAge;
     private JTextField info1TextField;
     private JTextField info2TextField;
 
@@ -15,6 +17,14 @@ public class InputForm extends JFrame {
     private Utility utility;
 
     public InputForm() {
+
+        initComponents();
+        verifyInputs();
+    }
+
+
+    private void initComponents()
+    {
         utility = new Utility();
         setTitle("Input Validation Form");
         setSize(300, 200);
@@ -22,6 +32,25 @@ public class InputForm extends JFrame {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
         info1TextField = new JTextField();
+        info2TextField = new JTextField();
+
+        add(new JLabel("Info 1:"));
+        add(info1TextField);
+        add(new JLabel("Info 2:"));
+        add(info2TextField);
+
+
+        button = new JButton("Submit");
+        add(button);
+        button.setEnabled(false);
+
+
+        setVisible(true);
+    }
+
+    private void verifyInputs()
+    {
+
         info1TextField.setInputVerifier(new InputVerifier()
         {
             @Override
@@ -33,6 +62,7 @@ public class InputForm extends JFrame {
                 {
                     if (utility.validateName(textField))
                     {
+                        updateButtonState(true,null);
                         return true;
                     }
                 }
@@ -41,12 +71,10 @@ public class InputForm extends JFrame {
                     System.out.println(e);
                 }
 
+                updateButtonState(false,null);
                 return false;
             }
         });
-
-        info2TextField = new JTextField();
-        //info2TextField.setEnabled(false); // Initially disabled
 
         info2TextField.setInputVerifier(new InputVerifier()
         {
@@ -55,34 +83,39 @@ public class InputForm extends JFrame {
             {
                 JTextField jtf = (JTextField) input;
                 String textField = jtf.getText();
-                try {
+                try
+                {
                     int age = Integer.parseInt(textField);
-                    return utility.validateAge(age);
-                } catch (NumberFormatException e) {
+                    if(utility.validateAge(age))
+                    {
+                        updateButtonState(null, true);
+                        return true;
+                    }
+                }
+                catch (NumberFormatException e)
+                {
                     System.out.println(e);
-                } catch (InvalidAgeException e) {
+                }
+                catch (InvalidAgeException e)
+                {
                     System.out.println(e);
                 }
 
-
+                updateButtonState(null,false);
                 return false;
             }
         });
 
-        add(new JLabel("Info 1:"));
-        add(info1TextField);
-        add(new JLabel("Info 2:"));
-        add(info2TextField);
+    }
 
-
-        button = new JButton("Submit");
-        add(button);
-        button.setEnabled(false);
-        //on submit checks for exceptions ?
-        //add(new Button("Submit"));
-
-
-        setVisible(true);
+    private void updateButtonState(Boolean nameValid, Boolean ageValid) {
+        if (nameValid != null) {
+            verifyName = nameValid;
+        }
+        if (ageValid != null) {
+            verifyAge = ageValid;
+        }
+        button.setEnabled(verifyName && verifyAge);
     }
 
     public static void main(String[] args)
