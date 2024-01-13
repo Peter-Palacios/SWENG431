@@ -1,5 +1,4 @@
-import javax.naming.InvalidNameException;
-import javax.naming.NamingException;
+import CustomExceptions.*;
 
 public class Utility {
 
@@ -8,12 +7,13 @@ public class Utility {
     // or exception thrown
 
 
-    public boolean validateName(String s) throws InvalidNameFormatException
+    public boolean checkName(String s) throws InvalidNameFormatException
     {
+        int inputLength = s.length();
 
-        if(s.length() == 0 || s.length() > 15)
+        if(inputLength== 0 || inputLength > 15)
         {
-            throw new InvalidNameFormatException("NameException: 0 <= (30) characters <= 15 is invalid. Note that the number 30 depends on the actual user input");
+            throw new InvalidNameFormatException("NameException: 0 <= " + inputLength + " characters <= 15 is invalid.");
         }
         String stringLowerCase = s.toLowerCase();
 
@@ -39,7 +39,7 @@ public class Utility {
 
     }
 
-    public boolean validateAge(int age) throws InvalidAgeException
+    public boolean checkAge(int age) throws InvalidAgeException
     {
         if(age >= 100)
         {

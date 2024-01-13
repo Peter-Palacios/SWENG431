@@ -1,9 +1,6 @@
-import javax.naming.NamingException;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
+import CustomExceptions.*;
 
 
 public class InputForm extends JFrame {
@@ -34,9 +31,9 @@ public class InputForm extends JFrame {
         info1TextField = new JTextField();
         info2TextField = new JTextField();
 
-        add(new JLabel("Info 1:"));
+        add(new JLabel("Name:"));
         add(info1TextField);
-        add(new JLabel("Info 2:"));
+        add(new JLabel("Age:"));
         add(info2TextField);
 
 
@@ -60,7 +57,7 @@ public class InputForm extends JFrame {
                 String textField = jtf.getText();
                 try
                 {
-                    if (utility.validateName(textField))
+                    if (utility.checkName(textField))
                     {
                         updateButtonState(true,null);
                         return true;
@@ -86,7 +83,7 @@ public class InputForm extends JFrame {
                 try
                 {
                     int age = Integer.parseInt(textField);
-                    if(utility.validateAge(age))
+                    if(utility.checkAge(age))
                     {
                         updateButtonState(null, true);
                         return true;
