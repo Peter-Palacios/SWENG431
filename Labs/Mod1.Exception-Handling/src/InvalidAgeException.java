@@ -1,8 +1,9 @@
 class InvalidAgeException  extends Exception
 {
-    public InvalidAgeException (String str)
+
+    public InvalidAgeException(String message)
     {
-        // calling the constructor of parent Exception  
-        super(str);
+        super(message);
     }
+
 }  
