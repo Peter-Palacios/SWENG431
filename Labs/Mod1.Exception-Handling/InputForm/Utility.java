@@ -39,9 +39,9 @@ public class Utility {
 
     }
 
-    public boolean checkAge(int age) throws InvalidAgeException
+    public boolean checkAge(int age) throws InvalidAgeException, NumberFormatException
     {
-        if(age >= 100)
+        if(age > 100)
         {
             throw new InvalidAgeException("AgeException: 0<= " +age+" <= 100 is invalid");
         }

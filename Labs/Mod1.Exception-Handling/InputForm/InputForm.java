@@ -65,7 +65,7 @@ public class InputForm extends JFrame {
                 }
                 catch (InvalidNameFormatException e)
                 {
-                    System.out.println(e);
+                    System.out.println(e.getMessage());
                 }
 
                 updateButtonState(false,null);
@@ -89,13 +89,9 @@ public class InputForm extends JFrame {
                         return true;
                     }
                 }
-                catch (NumberFormatException e)
+                catch (NumberFormatException | InvalidAgeException e)
                 {
-                    System.out.println(e);
-                }
-                catch (InvalidAgeException e)
-                {
-                    System.out.println(e);
+                    System.out.println(e.getMessage());
                 }
 
                 updateButtonState(null,false);
