@@ -1,3 +1,8 @@
+/**
+ * Author: Peter Palacios
+ * Lab1: Exception Handling
+ */
+
 import javax.swing.*;
 
 import CustomExceptions.*;
