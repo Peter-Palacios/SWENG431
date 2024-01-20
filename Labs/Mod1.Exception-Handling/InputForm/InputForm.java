@@ -24,7 +24,7 @@ public class InputForm extends JFrame {
         verifyInputs();
     }
 
-
+ // what does this code do ?
     private void initComponents()
     {
         utility = new Utility();
