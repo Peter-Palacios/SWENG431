@@ -134,25 +134,25 @@ public class NewtonsMethod
 
 
 
-
-        System.out.println("type 7 digit user Id for newtons method example, or press Enter for default values");
-
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(System.in)
-        );
-
-        String userInput = reader.readLine();
-
-        try
-        {
-            int inputValue = Integer.parseInt(userInput);
-
-        }
-        catch (NumberFormatException e)
-        {
-            //default values
-            //System.out.println();
-        }
+//
+//        System.out.println("type 7 digit user Id for newtons method example, or press Enter for default values");
+//
+//        BufferedReader reader = new BufferedReader(
+//                new InputStreamReader(System.in)
+//        );
+//
+//        String userInput = reader.readLine();
+//
+//        try
+//        {
+//            int inputValue = Integer.parseInt(userInput);
+//
+//        }
+//        catch (NumberFormatException e)
+//        {
+//            //default values
+//            //System.out.println();
+//        }
 
     }
 }
