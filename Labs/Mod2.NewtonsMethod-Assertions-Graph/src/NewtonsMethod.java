@@ -1,3 +1,7 @@
+/**
+ * Lab2 - Part 1
+ * @author Peter Palacios, Emily Kan, Tanmay Gupta
+ */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,15 +17,15 @@ public class NewtonsMethod
     private double[] guessedXValue;
     private double[] valueOfPolynomial;
 
-    public NewtonsMethod()
+    public NewtonsMethod(int _a, int _b, int _c, int _d, int _e, int _f, int _g)
     {
-        a=8;
-        b=7;
-        c=6;
-        d=5;
-        e=4;
-        f=3;
-        g=2;
+        a=_a;
+        b=_b;
+        c=_c;
+        d=_d;
+        e=_e;
+        f=_f;
+        g=_g;
 
     }
 
@@ -42,7 +46,6 @@ public class NewtonsMethod
             for (int i = 0; i <= 2000; i++)
             {
                 fOfX = getFofX(x);
-                //System.out.println(fOfX);
                 fPrimeOfX = getFPrimeOfX(x);
 
                 try
@@ -64,7 +67,6 @@ public class NewtonsMethod
                     roots[rootNumber] = xPlusOne;
                     numberOfIterations[rootNumber]=i;
                     valueOfPolynomial[rootNumber] = getFofX(xPlusOne);
-
                     rootNumber++;
                     break;
 
@@ -123,36 +125,59 @@ public class NewtonsMethod
 
 
 
+
     public static void main(String[] args) throws IOException
     {
-        NewtonsMethod newtons = new NewtonsMethod();
+        NewtonsMethod newtons = printUser();
 
         newtons.findRoots();
 
         newtons.printRoots();
 
+    }
+
+    public static NewtonsMethod printUser() throws IOException
+    {
+        boolean correctInput = false;
+
+        System.out.println("type 7 digit user Id for newtons method example, or press Enter for default values");
 
 
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(System.in)
+        );
 
-//
-//        System.out.println("type 7 digit user Id for newtons method example, or press Enter for default values");
-//
-//        BufferedReader reader = new BufferedReader(
-//                new InputStreamReader(System.in)
-//        );
-//
-//        String userInput = reader.readLine();
-//
-//        try
-//        {
-//            int inputValue = Integer.parseInt(userInput);
-//
-//        }
-//        catch (NumberFormatException e)
-//        {
-//            //default values
-//            //System.out.println();
-//        }
+
+        do {
+
+            String userInput = reader.readLine();
+
+
+            if (userInput.isEmpty()) {
+                return new NewtonsMethod(1, 2, 3, 4, 5, 6, 7);
+
+            }
+
+            try {
+                int[] inputValue = new int[7];
+                if (userInput.length() == 7) {
+                    for (int i = 0; i < 7; i++) {
+                        inputValue[i] = Character.getNumericValue(userInput.charAt(i));
+                    }
+                    correctInput = true;
+                    return new NewtonsMethod(inputValue[0], inputValue[1], inputValue[2], inputValue[3], inputValue[4], inputValue[5], inputValue[6]);
+                }
+
+                System.out.println("Please enter exactly 7 digits, or press 'Enter for default values");
+
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            }
+
+        }while (!correctInput);
+
+        return new NewtonsMethod(1,2,3,4,5,6,7);
+
 
     }
 }
