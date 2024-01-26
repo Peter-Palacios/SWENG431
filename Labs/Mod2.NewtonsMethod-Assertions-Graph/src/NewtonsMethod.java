@@ -162,6 +162,7 @@ public class NewtonsMethod
                 int[] inputValue = new int[7];
                 if (userInput.length() == 7) {
                     for (int i = 0; i < 7; i++) {
+
                         inputValue[i] = Character.getNumericValue(userInput.charAt(i));
                     }
                     correctInput = true;
@@ -170,7 +171,7 @@ public class NewtonsMethod
 
                 System.out.println("Please enter exactly 7 digits, or press 'Enter for default values");
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | NullPointerException e) {
                 System.out.println(e.getMessage());
             }
 
