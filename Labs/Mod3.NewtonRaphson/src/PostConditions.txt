@@ -1,0 +1,7 @@
+Post Conditions:
+The absolute difference between the new solution and previous must be within 0.00001
+The difference must occur within 10000 iterations of the program
+If not, "Infinity" is output
+
+
+

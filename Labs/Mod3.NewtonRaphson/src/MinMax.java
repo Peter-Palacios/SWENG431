@@ -2,6 +2,7 @@ public class MinMax
 {
     private double x;
     private double y;
+    private final double differenceChecker = 0.00001;
 
     public MinMax()
     {
@@ -9,7 +10,7 @@ public class MinMax
         y = Math.random()*5;
     }
 
-    public void findMinMax()
+    public void findMinMax() throws RuntimeException
     {
         if( x>6 || y >5)
         {
@@ -20,9 +21,14 @@ public class MinMax
         for(int i =0;i<=10000;i++)
         {
             double nextX;
+            double nextY;
             try
             {
+                //get NextX
                 nextX = x - (getPrimeOfX(x,y)/getDoublePrimeOfX(x));
+                //use nextX to get next y
+                nextY = y - (getPrimeOfY(nextX, y)/getDoublePrimeOfY(y));
+
             }
             catch (ArithmeticException e)
             {
@@ -30,7 +36,7 @@ public class MinMax
                 break;
             }
 
-            if(Math.abs(nextX-x) < 0.00001)
+            if(Math.abs(nextX-x) < differenceChecker && Math.abs(nextY-y) < differenceChecker)
             {
                 double MinMax = ValueOfFunction(x,y);
 
@@ -38,6 +44,7 @@ public class MinMax
                 return;
             }
             x= nextX;
+            y= nextY;
         }
 
 
@@ -46,6 +53,7 @@ public class MinMax
 
 
     }
+
 
 
     private double ValueOfFunction(double x, double y)
@@ -63,4 +71,18 @@ public class MinMax
         return(12*Math.pow(x,2));
     }
 
+
+    private double getPrimeOfY(double x, double y) {return ((12*Math.pow(y,5) - x));}
+
+    private double getDoublePrimeOfY(double y) {return (60*Math.pow(y,4));}
+
+
 }
+
+
+
+
+
+
+
+
