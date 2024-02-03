@@ -1,0 +1,27 @@
+S1 = - {1, 100, 150, "not a triangle"}
+- {2, 100, 150, "not a triangle"}
+- {50, 100, 150, "not a triangle"}
+- {99, 100, 150, "scalene"}
+- {100, 100, 150, "isosceles"} 
+- {50, 50, 150, "not a triangle"}
+- {50, 51, 150, "not a triangle"}
+- {50, 149, 150, "scalene"}
+- {50, 150, 150, "isosceles"}
+- {50, 100, 100, "isosceles"}
+- {50, 100, 101, "scalene"}
+- {50, 100, 149, "scalene"}
+- {50, 100, 150, "not a triangle"}
+
+S2-S1=
+
+- {0, 100, 150, "not a triangle"}
+- {101, 100, 150, "scalene"}
+- {50, 49, 150, "not a triangle"}
+- {50, 151, 150, "scalene"}
+- {50, 100, 99, "scalene"}
+- {50, 100, 151, "not a triangle"}
+
+S3
+There are no triangles s3 can't reveal since it looks at all extrema and cases outside of that extreme, while any cases within the norm are covered by the S1
+
+
