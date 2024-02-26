@@ -1,3 +1,9 @@
+/**
+ * Lab6 - Part 2
+ * @author Peter Palacios, Emily Kan, Tanmay Gupta
+ */
+
+
 package pkg;
 
 public class MyJUnit extends TestHarness {
@@ -7,7 +13,7 @@ public class MyJUnit extends TestHarness {
 
             if (TestletIF.class.isAssignableFrom(c)) {
                 TestHarness testHarness = new MyJUnit();
-                TestletIF testlet = (TestletIF) c.getConggstructor(TestHarness.class).newInstance(testHarness);
+                TestletIF testlet = (TestletIF) c.getConstructor(TestHarness.class).newInstance(testHarness);
                 testlet.runTest();
             } else {
                 System.out.println("The provided class does not implement TestletIF");
