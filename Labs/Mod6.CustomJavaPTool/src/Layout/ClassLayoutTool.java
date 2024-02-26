@@ -41,7 +41,7 @@ public class ClassLayoutTool {
                 if (i > 0) {
                     exceptions.append(", ");
                 }
-                exceptions.append(exceptionTypes[i].getSimpleName());
+                exceptions.append(exceptionTypes[i].getCanonicalName());
             }
             return exceptions.toString();
         } else {
